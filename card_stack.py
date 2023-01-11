@@ -1,6 +1,6 @@
 from card import Card
 
-class CardStack:
+class CenterStack:
     def __init__(self,card_vals = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen"], wilds = ["King","Joker"]):
         self.cards = []
         self.card_vals = card_vals
@@ -60,17 +60,17 @@ class SideStack:
     # add a card to the stack
     def add_card(self,new_card):
         if len(self.cards) == 0:
-            if new_card.get_val() == self.card_vals[0]:
-                self.cards.append(new_card)
-                return True
-            else:
-                return False
+            self.cards.append(new_card)
+            return True
         else:
             if new_card.get_val() in self.card_vals:
                 if self.card_vals.index(self.cards[-1].get_val()) + 1 == self.card_vals.index(new_card.get_val()):
                     self.cards.append(new_card)
                     return True
                 elif self.card_vals.index(self.cards[-1].get_val()) + 1 == self.card_vals.index(new_card.get_val()):
+                    self.cards.append(new_card)
+                    return True
+                elif self.card_vals.index(self.cards[-1].get_val()) == self.card_vals.index(new_card.get_val()):
                     self.cards.append(new_card)
                     return True
                 else:
